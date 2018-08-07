@@ -1,0 +1,11 @@
+select  tb_order_detail.*
+from tb_order_detail
+where tb_order_detail.order_id in
+(select tb_order.id
+from tb_order
+inner join tb_bulter
+on tb_order.bulter_id=tb_bulter.id
+and tb_order.status=5
+and tb_bulter.id=3)
+and MONTH(tb_order_detail.created_at)=7
+order by order_id
