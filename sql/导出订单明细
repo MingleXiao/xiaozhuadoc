@@ -9,3 +9,21 @@ and tb_order.status=5
 and tb_bulter.id=3)
 and MONTH(tb_order_detail.created_at)=7
 order by order_id
+
+--查看订单信息
+select 
+tb_order.id,
+tb_order.user_id,
+tb_deliver_address.mobile,
+tb_deliver_address.name,
+tb_deliver_address.city,
+tb_deliver_address.lines
+from tb_order 
+inner join tb_deliver_address
+on tb_order.user_id = tb_deliver_address.user_id
+and tb_order.address_id=tb_deliver_address.id
+where tb_order.id=100107
+
+select tb_order_detail.*
+from tb_order_detail
+where order_id=100107
